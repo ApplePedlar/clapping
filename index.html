@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Clapping</title>
+<script src="gakki.js"></script>
+<script src="notes.js"></script>
+<script>
+var pos;
+var timer;
+
+function start(){
+  var tempo = document.getElementById("tempo").value;
+
+  if (timer) {
+    stop();
+  }
+
+  pos = 0;
+  timer = setInterval(function() {
+    if (pos < notes[0].length) {
+      for (var i = 0; i < 4; i++) {
+        if (notes[i].charAt(pos) === "1") {
+          gakki[i].pause();
+          gakki[i].currentTime = 0;
+          gakki[i].play();
+        }
+      }
+    } else {
+      stop();
+    }
+    pos++;
+  }, 60 / tempo / 2 * 1000);
+}
+function stop() {
+  clearInterval(timer);
+}
+
+</script>
+</head>
+<body>
+Tempo:<input type="text" id="tempo" value="112">
+<button onclick="start()">start</button>
+<button onclick="stop()">stop</button>
+</body>
+</html>
