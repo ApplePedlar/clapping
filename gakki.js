@@ -37,22 +37,26 @@ function play() {
   var startTime = context.currentTime + 0.100;
   for (var i = 0; i < notes[0].length; i++) {
     for (var j = 0; j < 4; j++) {
-      if (notes[j].charAt(i) === "1" && partValue.indexOf("" + j) !== -1) {
-        playSound(j, startTime + i * 60 / tempo / 3);
+      if (notes[j].charAt(i) === "1") {
+        var volume = partValue.indexOf("" + j) !== -1 ? 1 : 0.3
+        playSound(j, startTime + i * 60 / tempo / 3, volume);
       }
     }
   }
 }
 
-function playSound(gakkiIndex, time) {
+function playSound(gakkiIndex, time, volume) {
   var source = context.createBufferSource();
   source.buffer = gakkiBuffer[gakkiIndex];
-  source.connect(context.destination);
+  var gainNode = context.createGain();
+  source.connect(gainNode);
+  gainNode.connect(context.destination);
+  gainNode.gain.value = volume;
   source.start(time);
 }
 
-function stopSound() {
-  
+function touch() {
+  console.log("touch!");
 }
 
 window.onload = init;

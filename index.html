@@ -6,18 +6,17 @@
 <script src="notes.js"></script>
 </head>
 <body>
-Tempo:<input type="text" id="tempo" value="90">
+Tempo:<input type="text" id="tempo" value="90" size="5">
 <button onclick="play()">play</button>
 <button onclick="window.location.reload()">stop</button>
 <br>
 <br>
 <form id="part">
-  <label><input type="radio" name="part" value="0123" checked>ぜんぶ</label><br>
-  <label><input type="radio" name="part" value="0">パート１</label><br>
-  <label><input type="radio" name="part" value="1">パート２</label><br>
-  <label><input type="radio" name="part" value="2">パート３</label><br>
-  <label><input type="radio" name="part" value="3">パート４</label><br>
+  <label><input type="radio" name="part" value="0123" checked>ぜんぶ同じボリューム</label><br>
+  <label><input type="radio" name="part" value="0">パート１を大きく</label><br>
+  <label><input type="radio" name="part" value="1">パート２を大きく</label><br>
+  <label><input type="radio" name="part" value="2">パート３を大きく</label><br>
+  <label><input type="radio" name="part" value="3">パート４を大きく</label><br>
 </form>
-<!--div style="width:100%;height:50%;background-color:#DDDDDD" onClick="touch()" onTouch="touch()">touch!</div-->
 </body>
 </html>
