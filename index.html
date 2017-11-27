@@ -1,44 +1,23 @@
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clapping</title>
 <script src="gakki.js"></script>
 <script src="notes.js"></script>
-<script>
-var pos;
-var timer;
-
-function start(){
-  var tempo = document.getElementById("tempo").value;
-
-  if (timer) {
-    stop();
-  }
-
-  pos = 0;
-  timer = setInterval(function() {
-    if (pos < notes[0].length) {
-      for (var i = 0; i < 4; i++) {
-        if (notes[i].charAt(pos) === "1") {
-          gakki[i].pause();
-          gakki[i].currentTime = 0;
-          gakki[i].play();
-        }
-      }
-    } else {
-      stop();
-    }
-    pos++;
-  }, 60 / tempo / 2 * 1000);
-}
-function stop() {
-  clearInterval(timer);
-}
-
-</script>
 </head>
 <body>
-Tempo:<input type="text" id="tempo" value="112">
-<button onclick="start()">start</button>
-<button onclick="stop()">stop</button>
+Tempo:<input type="text" id="tempo" value="90">
+<button onclick="play()">play</button>
+<button onclick="window.location.reload()">stop</button>
+<br>
+<br>
+<form id="part">
+  <label><input type="radio" name="part" value="0123" checked>ぜんぶ</label><br>
+  <label><input type="radio" name="part" value="0">パート１</label><br>
+  <label><input type="radio" name="part" value="1">パート２</label><br>
+  <label><input type="radio" name="part" value="2">パート３</label><br>
+  <label><input type="radio" name="part" value="3">パート４</label><br>
+</form>
+<!--div style="width:100%;height:50%;background-color:#DDDDDD" onClick="touch()" onTouch="touch()">touch!</div-->
 </body>
 </html>
