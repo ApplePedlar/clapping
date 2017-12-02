@@ -3,10 +3,10 @@ var gakkiBuffer = [];
 
 function init() {
   console.log("onload");
-  loadSound("./wav/ding.wav", 0);
-  loadSound("./wav/clap.wav", 1);
+  loadSound("./wav/kasta.wav", 0);
+  loadSound("./wav/kasta.wav", 1);
   loadSound("./wav/kasta.wav", 2);
-  loadSound("./wav/tanba.wav", 3);
+  loadSound("./wav/kasta.wav", 3);
 }
 
 function loadSound(url, index) {
@@ -38,7 +38,7 @@ function play() {
   for (var i = 0; i < notes[0].length; i++) {
     for (var j = 0; j < 4; j++) {
       if (notes[j].charAt(i) === "1") {
-        var volume = partValue.indexOf("" + j) !== -1 ? 1 : 0.3
+        var volume = partValue.indexOf("" + j) !== -1 ? 1 : 0.2
         playSound(j, startTime + i * 60 / tempo / 3, volume);
       }
     }
